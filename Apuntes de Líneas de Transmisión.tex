@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\title{L\'ineas de transmisi\'on}
+
+\begin{document}
+
+Para el estudio de las LT, tomaremos un elemento diferencial longitudinal en la dirección z.
+Asumiremos que la soluci\'on que se propaga por la LT es de tipo TEM, por lo que no existe acoplamiento el\'ectrico ni magn\'etico.
+Intentaremos definir el concepto de diferencia de potencial entre 2 puntos situados en la misma secci\'on transversal de la LT
+(Suponiendo que en la situaci\'on A, 1 y 2 están en la misma seci\'on, pero en B no)
+
+$$U_{12}|_A - U_{12}|_B = - \oint \vec{D}d\vec{L} = -\int_S \vec{\nabla} \times \vec{E}\vec{n}ds = \int \frac{\partial \vec{B}}{\partial}$$
+
+\section{Modelo Circuital de una LT}
+Tanto la tensi\'on como la corriente en un elemento diferencial en una LT dependen \'unicamente de:
+\begin{itemize}
+	\item De la capacidad creada entre los conductores
+	\item Del flujo magnético que atraviesa la secci\'on del elemento (autoinducci\'on)
+\end{itemize}
+
+(Ambas definidas por unidad de longitud)
+Teniendo esto en cuenta, se puede representar una LT como un cuadripolo con una bobina en serie y un condensador en paralelo.
+
+\section{Ondas de tensi\'on y corriente en una LT}
+Aplicando las leyes de Kirchoff:
+$$U = L\frac{\partial I}{\partial t}dz + U + \frac{\partial U}{\partial z}dz$$
+$$I = L\frac{\partial U}{\partial t}dz + I + \frac{\partial I}{\partial z}dz$$
+
+simplificando, aparece el sistema de ecuaciones conocido como ecuaciones del telegrafista:
+
+$$L\frac{\partial I}{\partial t} = \frac{\partial U}{\partial z}$$
+$$C\frac{\partial U}{\partial t} = \frac{\partial I}{\partial z}$$
+
+derivando respecto a z y sustituyendo, llegamos a:
+
+$$\frac{\partial^2 U}{\partial z^2} = LC \frac{\partial^2 U}{\partial t^2}$$
+
+comparando con la ecuaci\'on general de onda, obtenemos la velocidad de propagaci\'on $= \frac{1}{\sqrt{LC}}$
+
+Siguiendo una soluci\'on de D'Alambert, la onda se puede descomponer en sus componentes progresiva y regresiva (que al sumarse producen la onda estacionaria que observamos)
+$$U(z,t) = U^+ (z,t) + U^- (z,t) = F_1(t - z/c) + F_1(t + z/c)$$
+$$I(z,t) = I^+ (z,t) + I^- (z,t) =\frac{1}{Z_{LT}}( F_1(t - z/c) - F_1(t + z/c) )$$
+
+La velocidad de propagaci\'on, definida  como $\frac{1}{\sqrt{LC}}$ equivale a $\frac{c_0}{\sqrt{\varepsilon_r}}$
+
+La impedancia de la LT se define como el cociente entre $U^+$ e $I^+$, independientemente de tiempo y lugar, y equivale a $\sqrt{\frac{L}{C}}$
+
+Velocidad de propagaci\'on e impedancia caracterizan por completo a una LT.
+
+La potencia transmitida por una LT se calcula como el producto de tensi\'on por intensidad, que desarrollando el producto de sumas de ondas progresivas, nos queda: 
+$$P = \frac{(U^+)^2}{Z_{LT}} -\frac{(U^-)^2}{Z_{LT}}$$
+
+Para el estudio de una LT en r\'egimen transitorio (a saber, hallar I y U en cualquier punto de la LT), definimos el r\'egimen transitorio como el breve per\'iodo de tiempo entre dos reg\'imenes permanentes (o estables)
+
+Generaci\'on de una onda incidente (progresiva):
+Conectando una LT infinita a un generador, se produce una onda \'unicamente progresiva, cuyo valor de tensión se puede calcular con un simple divisor de tensión (con la resistencia del generador)
+
+Conectamos ahora una LT finita a un generador y a una resistencia en sus extremos:
+	en $t=0$, se genera una onda progresiva, que viaja por la LT hasta el final
+	en $t=l/v_p$, la onda alcanza la resistencia al final de LT, y para satisfacer la condici\'on de contorno, se genera una onda regresiva ($U^-$), de forma que 
+	$$R_L = Z_{LT}\frac{U^+ +U^-}{U^+ +U^-U^+ -U^-}$$
+En caso de que la resistencia de carga sea igual a la $Z_{LT}$, el factor de reflexi\'on de la carga es 0, en lo que se conoce como situaci\'on de carga adaptada (que consigue la m\'axima transferencia de potencia) 
+$$\rho_L =\frac{R_L - Z_{LT}}{R_L + Z_{LT}}$$
+	en $t=2l/v_p$, la onda regresiva alcanza el generador, por lo que se genera otra onda progresiva, según el coeficiente
+	$$\rho_g =\frac{R_g - Z_{LT}}{R_g + Z_{LT}}$$
+
+\section{Tema 3: La LT en r\'egimen transitorio}
+\subsection{Introducci\'on}
+Una LT queda totalmente caracterizada por los valores de $Z_c$ y $V_p$.
+
+En este tema estudiaremos la LT en r\'egimen transitorio, definido como el per\'iodo entre dos reg\'imenes permanentes distintos, provocado por un cambio en las condiciones en un extremo de la l\'inea.
+\subsection{Generaci\'on de una onda incidente $U^+$}
+
+Dado un generador de tensi\'on caracterizado por $U_g(t)$ y $R_g$, al que se le conecta una LT, considerada (inicialmente) infinita, de impedancia $Z_c$ y velocidad de propagaci\'on $V_p$, se produce una onda progresiva en $z=0$.
+\begin{itemize}
+	\item Antes de la conexi\'on al generador, U e I vale ambas 0.
+	\item Tras la conexi\'on, la tensi\'on en $z=0$ es la tensi\'on resultante de calcular un divisor de tensi\'on con $R_g$ y $Z_c$: $U^+ = U_g\frac{Z_c}{R_g + Z_c} \hspace{0.5cm} \rightarrow \hspace{0.5cm} U^+ (z, t) = U_g\frac{Z_c}{R_g + Z_c} (t-\frac{z}{V_p})$
+\end{itemize}
+
+\subsection{Factores de reflexi\'on y transmisi\'on}
+\subsubsection{Factor de reflexi\'on}
+Partimos de una LT conectada a un generador en $z=0$ y a una resistencia de carga $R_L$ al final de la l\'inea, en $Z=L$.
+
+En $t=0$, se genera una onda progresiva, como vimos en el apartado anterior, y alcanza la resistencia de carga en $t=\frac{L}{V_p}=T$. Hasta entonces, es la \'unica onda en la l\'inea.
+
+En $t=T$ y $z=L$, observamos las condiciones de contorno impuestas por la carga y por la l\'inea:
+$$\frac{U^+(z, t)}{I^+(z, t)} = R_L \hspace{0.5cm} \frac{U^+(z, t)}{I^+(z, t)} = Z_c$$
+
+Puesto que la impedancia de la l\'inea y la resistencia de carga no tienen porqu\'e valer lo mismo, la suposici\'on de que la onda progresiva es la \'unica deja de ser cierta. Se genera pues una onda regresiva.
+	$$U(z, t) = U^+ + U^-$$
+	$$I(z, t) = \frac{1}{Z_c}(U^+ - U^-)$$
+	$$\frac{U(z = L, t)}{I(z = L, t)} = Z_c\frac{U^++U^-}{U^+-U^-} = R_L$$
+
+Definimos pues el factor de reflexi\'on como el cociente entre la onda reflejada y la onda incidente:
+$$\rho = \frac{U^-}{U^+} = \frac{R_L-Z_c}{R_L+Z_c}$$
+
+Cuando el factor de reflexi\'on se anule ($R_L=Z_c$), estaremos en una situaci\'on de carga adaptada, y no habr\'a onda reflejada, por lo que toda la onda incidente se transmite.
+
+\end{document}
+
+
+
+
